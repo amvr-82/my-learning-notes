@@ -9,15 +9,14 @@ Spread syntax (...):
 
 ## مثال ساده
 
-````jsx
+`````jsx
 const userProps = {
   name: "Amirhossein",
   age: 22,
   role: "Frontend Developer",
 };
 
-<UserCard {...userProps} />
-```
+(<UserCard {...userProps} />)```
 
 
 ## رندر شرطی
@@ -25,15 +24,13 @@ const userProps = {
 در React می‌توان بر اساس یک شرط، مقدار، استایل یا کامپوننت متفاوتی رندر کرد.
 رایج‌ترین روش استفاده از **ternary operator** داخل JSX است.
 
-### مثال ساده
-```jsx
+## مثال ساده
+
+````jsx
 const isLogin = true;
 
 <div className={isLogin ? "bg-red" : "bg-green"}>
   Welcome
 </div>
-```
-```
-
-اگه بگی این md رو کجا می‌بینی (GitHub؟ VSCode Preview؟ یک سایت خاص؟) می‌تونم دقیق‌تر هم بهینه‌اش کنم (مثلاً برای GitHub-flavored markdown، یا اینکه کدبلاک‌ها highlight درست بگیرن).
-````
+```;
+`````
