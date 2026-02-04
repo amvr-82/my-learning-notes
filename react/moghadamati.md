@@ -1,4 +1,4 @@
-<div dir="rtl" >
+<div align="right" >
 #1 سطح مقدماتی
 
 
