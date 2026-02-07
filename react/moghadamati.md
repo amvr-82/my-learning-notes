@@ -55,13 +55,11 @@ const isLogin = true;
 
 ##### نکته نِردی:
 
-<div dir="ltr">
 ```jsx
 {
   count && <p>{count}</p>;
 }
 ```
-</div>
 
 اگه `count = 0` باشه، **چیزی نشون داده نمی‌شه** چون `0` falsy هست.
 
@@ -95,7 +93,7 @@ const isLogin = true;
 
 ---
 
-#### List Rendering
+### List Rendering
 
 ###### 🔁 List Rendering در React ?
 
@@ -161,3 +159,5 @@ key={user.id}
 ```
 
 ---
+
+###
