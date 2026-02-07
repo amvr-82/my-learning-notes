@@ -1,4 +1,3 @@
-````md
 <div dir="rtl" align="right">
 # سطح مقدماتی
 
@@ -21,7 +20,6 @@ const userProps = {
 <UserCard {...userProps} />;
 </div>
 ```
-````
 
 ### 2رندر شرطی
 
@@ -275,5 +273,6 @@ function handleSubscribeClick() {
 
 ---
 
+###
+
 </div>
-```
