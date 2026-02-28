@@ -1,0 +1,133 @@
+
+
+
+---
+
+useId در React
+
+useId چیست؟
+
+useId یک هوک در React است که برای تولید یک شناسه (ID) یکتا و پایدار استفاده می‌شود.
+
+این شناسه:
+
+برای هر نمونه از کامپوننت متفاوت است
+
+بین رندرهای مجدد تغییر نمی‌کند
+
+مخصوص اتصال عناصر HTML به یکدیگر است (مثل label و input)
+
+
+
+---
+
+چرا به useId نیاز داریم؟
+
+در HTML، مقدار id باید در کل صفحه یکتا باشد.
+
+مثال ساده HTML:
+
+<label for="email">Email</label>
+<input id="email" />
+
+مشکل زمانی ایجاد می‌شود که این ساختار را در یک کامپوننت React چند بار استفاده کنیم:
+
+<LoginForm />
+<LoginForm />
+<LoginForm />
+
+اگر داخل کامپوننت id="email" گذاشته باشیم، در صفحه ۳ بار تکرار می‌شود ❌
+و این نقض قانون یکتایی ID در HTML است.
+
+
+---
+
+راه حل با useId
+
+import { useId } from "react";
+
+function LoginForm() {
+  const id = useId();
+
+  return (
+    <div>
+      <label htmlFor={id}>Email</label>
+      <input id={id} type="email" />
+    </div>
+  );
+}
+
+حالا اگر این کامپوننت چند بار استفاده شود، React چیزی شبیه این تولید می‌کند:
+
+:r1:
+:r2:
+:r3:
+
+هر کامپوننت یک شناسه مستقل و یکتا خواهد داشت ✅
+
+
+---
+
+ترکیب useId با String Interpolation
+
+String Interpolation در جاوااسکریپت با استفاده از Template Literal انجام می‌شود:
+
+`text ${variable}`
+
+در React می‌توان از آن برای ساخت IDهای پیشرفته‌تر استفاده کرد.
+
+مثال:
+
+import { useId } from "react";
+
+function SignupForm() {
+  const id = useId();
+
+  return (
+    <div>
+      <label htmlFor={`${id}-email`}>Email</label>
+      <input id={`${id}-email`} type="email" />
+
+      <label htmlFor={`${id}-password`}>Password</label>
+      <input id={`${id}-password`} type="password" />
+    </div>
+  );
+}
+
+اگر مقدار id مثلاً :r5: باشد، خروجی این خواهد بود:
+
+:r5:-email
+:r5:-password
+
+
+---
+
+تفاوت useId با useState
+
+useState	useId
+
+برای نگهداری داده استفاده می‌شود	برای تولید شناسه یکتا
+مقدار آن قابل تغییر است	مقدار آن ثابت است
+باعث رندر مجدد می‌شود	باعث رندر مجدد نمی‌شود
+
+
+
+---
+
+چه زمانی از useId استفاده کنیم؟
+
+✔ زمانی که نیاز به اتصال label و input داریم
+✔ زمانی که کامپوننت چند بار در صفحه تکرار می‌شود
+✔ زمانی که می‌خواهیم ID یکتا تولید کنیم بدون نگرانی از تداخل
+
+❌ برای نگهداری داده یا مدیریت state استفاده نمی‌شود
+
+
+---
+
+یک نکته مهم (رندر سمت سرور)
+
+یکی از دلایل اصلی وجود useId این است که React بتواند در رندر سمت سرور (SSR) و کلاینت، شناسه‌های یکسان تولید کند و مشکل mismatch به وجود نیاید.
+
+
+---
